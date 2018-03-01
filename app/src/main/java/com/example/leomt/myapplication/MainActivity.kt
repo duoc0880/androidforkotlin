@@ -9,31 +9,31 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    var btn1 : Button? = null
-    var btn2 : Button? = null
-    var imgbtn1 : ImageButton? = null
-    var imgbtn2 : ImageButton? = null
+    var btnTrue : Button? = null
+    var btnFalse : Button? = null
+    var imgbtnNext : ImageButton? = null
+    var imgbtnPrev : ImageButton? = null
     var tv : TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btn1 = findViewById(R.id.btn1)
-        btn2 = findViewById(R.id.btn2)
-        imgbtn1 = findViewById(R.id.imgbtn1)
-        imgbtn2 = findViewById(R.id.imgbtn2)
+        btnTrue = findViewById(R.id.btn1)
+        btnFalse = findViewById(R.id.btn2)
+        imgbtnNext = findViewById(R.id.imgbtn1)
+        imgbtnPrev = findViewById(R.id.imgbtn2)
         tv = findViewById(R.id.tv)
 
-        btn1!!.setOnClickListener(){
+        btnTrue!!.setOnClickListener(){
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show()
         }
 
-        btn2!!.setOnClickListener(){
+        btnFalse!!.setOnClickListener(){
             Toast.makeText(this, "Uncorrect", Toast.LENGTH_SHORT).show()
         }
-        imgbtn1!!.setOnClickListener(){
+        imgbtnNext!!.setOnClickListener(){
 
         }
-        imgbtn2!!.setOnClickListener(){
+        imgbtnPrev!!.setOnClickListener(){
 
         }
 
