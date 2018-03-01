@@ -41,16 +41,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn3"
+        <ImageButton
+            android:id="@+id/imgbtn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="< prev"/>
-        <Button
-            android:id="@+id/btn4"
+            android:src="@drawable/arrow_left"
+            />
+        <ImageButton
+            android:id="@+id/imgbtn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="next >"/>
+            android:src="@drawable/arrow_right"
+            />
     </LinearLayout>
 
 </LinearLayout>
