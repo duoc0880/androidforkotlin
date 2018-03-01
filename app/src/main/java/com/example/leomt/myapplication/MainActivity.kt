@@ -9,8 +9,10 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     var btn1 : Button? = null
-    var btn2 : Button ?= null
-    var tv : TextView ?= null
+    var btn2 : Button? = null
+    var btn3 : Button? = null
+    var btn4 : Button? = null
+    var tv : TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         btn2!!.setOnClickListener(){
             Toast.makeText(this, "Uncorrect", Toast.LENGTH_SHORT).show()
         }
-
     }
 }
+
 
