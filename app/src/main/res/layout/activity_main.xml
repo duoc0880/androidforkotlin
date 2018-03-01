@@ -1,47 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.leomt.myapplication.MainActivity"
+    android:orientation="vertical"
     android:gravity="center"
     >
-    <TextView
-        android:id="@+id/tv"
+ <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-        android:gravity="center"
-    android:text="Canbera is the capital of Australia"
-    android:padding="24dp"
-    />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btnTrue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TRUE" />
-        <Button
-            android:id="@+id/btnFalse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FALSE"/>
+    android:gravity="center">
+     <TextView
+         android:id="@+id/tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="24dp"
+         android:text="Canbera is the capital of Australia "/>
+ </LinearLayout>
 
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="next >"
-        />
-
-
+ <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+     android:orientation="horizontal">
+     <Button
+         android:id="@+id/btn1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="true"/>
+     <Button
+         android:id="@+id/btn2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="false"/>
+  </LinearLayout>
 
 </LinearLayout>
