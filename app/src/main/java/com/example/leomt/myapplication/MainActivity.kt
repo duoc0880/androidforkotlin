@@ -12,15 +12,15 @@ class MainActivity : AppCompatActivity() {
     var btnTrue : Button? = null
     var btnFalse : Button? = null
     var imgbtnNext : ImageButton? = null
-    var imgbtnPrev : ImageButton? = null
+   // var imgbtnPrev : ImageButton? = null
     var tv : TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnTrue = findViewById(R.id.btn1)
         btnFalse = findViewById(R.id.btn2)
-        imgbtnNext = findViewById(R.id.imgbtn1)
-        imgbtnPrev = findViewById(R.id.imgbtn2)
+      //  imgbtnNext = findViewById(R.id.imgbtn1)
+        imgbtnNext = findViewById(R.id.imgbtn2)
         tv = findViewById(R.id.tv)
 
         btnTrue!!.setOnClickListener(){
@@ -31,9 +31,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Uncorrect", Toast.LENGTH_SHORT).show()
         }
         imgbtnNext!!.setOnClickListener(){
-
-        }
-        imgbtnPrev!!.setOnClickListener(){
 
         }
 
