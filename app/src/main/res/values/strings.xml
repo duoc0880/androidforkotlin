@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="Question_autralia">Canbera is the capital of the Australia. </string>
+    <string name="Question_america">Amazon is the Rivers longest of the world! </string>
+    <string name="Correct">Correct</string>
+    <string name="InCorrect">InCorrect</string>
 </resources>

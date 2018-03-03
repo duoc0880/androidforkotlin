@@ -12,33 +12,51 @@ class MainActivity : AppCompatActivity() {
     var btnTrue : Button? = null
     var btnFalse : Button? = null
     var imgbtnNext : ImageButton? = null
-    var imgbtnPrev : ImageButton? = null
-    var tv : TextView? = null
+    var mQuestionTextView : TextView? = null
+    var mCurrentIndex : Int = 0
+
+    var mQuestionBank = arrayOf(Question(R.string.Question_autralia, true), Question(R.string.Question_america,false))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnTrue = findViewById(R.id.btn1)
         btnFalse = findViewById(R.id.btn2)
         imgbtnNext = findViewById(R.id.imgbtn1)
-        imgbtnPrev = findViewById(R.id.imgbtn2)
-        tv = findViewById(R.id.tv)
+        mQuestionTextView = findViewById(R.id.tv)
 
-        btnTrue!!.setOnClickListener(){
-            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show()
+        btnTrue?.setOnClickListener(){
+            CheckAnswer(true)
         }
-
-        btnFalse!!.setOnClickListener(){
-            Toast.makeText(this, "Uncorrect", Toast.LENGTH_SHORT).show()
+        btnFalse?.setOnClickListener(){
+            CheckAnswer(false)
         }
-        imgbtnNext!!.setOnClickListener(){
-
+        imgbtnNext?.setOnClickListener(){
+            mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.size
+            UpdateQuestion()
         }
-        imgbtnPrev!!.setOnClickListener(){
-
-        }
-
 
     }
+    fun UpdateQuestion(){
+        var question : Int? = 0
+            question = mQuestionBank[mCurrentIndex].mTextResId
+        mQuestionTextView?.setText(question!!)
+    }
+
+    fun CheckAnswer( userPressTrue: Boolean){
+        var answerIsTrue : Boolean
+        var messResId : Int = 0
+        answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue!!
+        if ( answerIsTrue == userPressTrue ) { messResId = R.string.Correct }
+        else messResId = R.string.InCorrect
+        Toast.makeText(this, messResId, Toast.LENGTH_SHORT).show()
+    }
+
+
 }
+
+
+
+
 
 
