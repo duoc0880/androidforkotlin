@@ -2,12 +2,16 @@ package com.example.leomt.myapplication
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+    private val TAG = "QuizActivity"
+    private val KEY_INDEX = "index"
 
     var btnTrue : Button? = null
     var btnFalse : Button? = null
@@ -34,9 +38,40 @@ class MainActivity : AppCompatActivity() {
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
             UpdateQuestion()
-
-
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart() called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume() called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause() called")
+    }
+
+    override fun onSaveInstanceState(savedInstanceState: Bundle?) {
+        super.onSaveInstanceState(savedInstanceState)
+        Log.i(TAG, "onSaveInstanceState")
+        savedInstanceState!!.putInt(KEY_INDEX, mCurrentIndex)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop() called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy() called")
+    }
+
         fun UpdateQuestion() {
             var question: Int? = 0
             question = mQuestionBank[mCurrentIndex].mTextResId
@@ -54,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-}
+
 
 
 
