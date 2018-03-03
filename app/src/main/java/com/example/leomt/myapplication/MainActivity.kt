@@ -22,36 +22,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         btnTrue = findViewById(R.id.btn1)
         btnFalse = findViewById(R.id.btn2)
-        imgbtnNext = findViewById(R.id.imgbtn1)
         mQuestionTextView = findViewById(R.id.tv)
+        imgbtnNext = findViewById(R.id.imgbtn2)
 
-        btnTrue?.setOnClickListener(){
+        btnTrue?.setOnClickListener() {
             CheckAnswer(true)
         }
-        btnFalse?.setOnClickListener(){
+        btnFalse?.setOnClickListener() {
             CheckAnswer(false)
         }
-        imgbtnNext?.setOnClickListener(){
-            mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.size
+        imgbtnNext?.setOnClickListener() {
+            mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
             UpdateQuestion()
+
+
+        }
+        fun UpdateQuestion() {
+            var question: Int? = 0
+            question = mQuestionBank[mCurrentIndex].mTextResId
+            mQuestionTextView?.setText(question!!)
         }
 
+        fun CheckAnswer(userPressTrue: Boolean) {
+            var answerIsTrue: Boolean
+            var messResId: Int = 0
+            answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue!!
+            if (answerIsTrue == userPressTrue) {
+                messResId = R.string.Correct
+            } else messResId = R.string.InCorrect
+            Toast.makeText(this, messResId, Toast.LENGTH_SHORT).show()
+        }
     }
-    fun UpdateQuestion(){
-        var question : Int? = 0
-            question = mQuestionBank[mCurrentIndex].mTextResId
-        mQuestionTextView?.setText(question!!)
-    }
-
-    fun CheckAnswer( userPressTrue: Boolean){
-        var answerIsTrue : Boolean
-        var messResId : Int = 0
-        answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue!!
-        if ( answerIsTrue == userPressTrue ) { messResId = R.string.Correct }
-        else messResId = R.string.InCorrect
-        Toast.makeText(this, messResId, Toast.LENGTH_SHORT).show()
-    }
-
 
 }
 
