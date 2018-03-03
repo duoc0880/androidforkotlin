@@ -31,12 +31,14 @@ class MainActivity : AppCompatActivity() {
 
         btnTrue?.setOnClickListener() {
             CheckAnswer(true)
+            btnTrue?.isEnabled = false
         }
         btnFalse?.setOnClickListener() {
             CheckAnswer(false)
         }
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
+            btnTrue?.isEnabled = false
             UpdateQuestion()
         }
     }
