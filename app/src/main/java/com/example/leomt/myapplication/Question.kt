@@ -6,6 +6,7 @@ package com.example.leomt.myapplication
  class Question {
     var mTextResId : Int? = 0
     var mAnswerTrue : Boolean? = false
+    var check : Boolean = false
 
      constructor (textResId : Int, answerTrue : Boolean ){
             mTextResId = textResId

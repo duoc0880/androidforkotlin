@@ -31,47 +31,15 @@ class MainActivity : AppCompatActivity() {
 
         btnTrue?.setOnClickListener() {
             CheckAnswer(true)
-            btnTrue?.isEnabled = false
         }
         btnFalse?.setOnClickListener() {
             CheckAnswer(false)
         }
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
-            btnTrue?.isEnabled = false
             UpdateQuestion()
+
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart() called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume() called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause() called")
-    }
-
-    override fun onSaveInstanceState(savedInstanceState: Bundle?) {
-        super.onSaveInstanceState(savedInstanceState)
-        Log.i(TAG, "onSaveInstanceState")
-        savedInstanceState!!.putInt(KEY_INDEX, mCurrentIndex)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop() called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy() called")
     }
 
         fun UpdateQuestion() {
