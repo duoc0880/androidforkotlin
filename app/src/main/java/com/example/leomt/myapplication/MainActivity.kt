@@ -10,15 +10,13 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = "QuizActivity"
-    private val KEY_INDEX = "index"
-
     var btnTrue : Button? = null
     var btnFalse : Button? = null
     var imgbtnNext : ImageButton? = null
     var mQuestionTextView : TextView? = null
     var mCurrentIndex : Int = 0
-
+    var score : Double? = 0.0
+    var percent : Double? = 0.0
     var mQuestionBank = arrayOf(Question(R.string.Question_autralia, true,0), Question(R.string.Question_america,false,0))
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +31,6 @@ class MainActivity : AppCompatActivity() {
             CheckAnswer(true)
             btnTrue?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
-
-
         }
         btnFalse?.setOnClickListener() {
             CheckAnswer(false)
@@ -43,10 +39,16 @@ class MainActivity : AppCompatActivity() {
         }
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
+            var total : Int? = 0
+            total = mQuestionBank.size
             UpdateQuestion()
             if (mQuestionBank[mCurrentIndex].mcheck == 0) {
                 btnTrue?.isEnabled = true
                 btnFalse?.isEnabled = true
+            }
+            if (mCurrentIndex == 0) {
+               percent = score?.div(total)?.times(100.0)
+               Toast.makeText(this, "you has been ${percent} % per score for the quiz ", Toast.LENGTH_SHORT ).show()
             }
 
         }
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue!!
             if (answerIsTrue == userPressTrue) {
                 messResId = R.string.Correct
+                score = score?.plus(1)
             } else messResId = R.string.InCorrect
             Toast.makeText(this, messResId, Toast.LENGTH_SHORT).show()
         }
