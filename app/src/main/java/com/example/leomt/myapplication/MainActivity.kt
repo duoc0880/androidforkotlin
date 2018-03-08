@@ -9,7 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-
+    val TAG = "QuizActivity"
+    val KEY_INDEX = " index "
     var btnTrue : Button? = null
     var btnFalse : Button? = null
     var imgbtnNext : ImageButton? = null
@@ -21,13 +22,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate(Bundle) called")
+
         setContentView(R.layout.activity_main)
-        btnTrue = findViewById(R.id.btn1)
-        btnFalse = findViewById(R.id.btn2)
-        mQuestionTextView = findViewById(R.id.tv)
+
+        if (savedInstanceState != null ) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0)
+        }
+//          mQuestionTextView = findViewById(R.id.tv)
+
+   //    btnTrue = findViewById(R.id.btn1)
+  //      btnFalse = findViewById(R.id.btn2)
         imgbtnNext = findViewById(R.id.imgbtn2)
 
-        btnTrue?.setOnClickListener() {
+        btnTrue!!.setOnClickListener() {
             CheckAnswer(true)
             btnTrue?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
