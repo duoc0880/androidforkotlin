@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     var mQuestionTextView : TextView? = null
     var mCurrentIndex : Int = 0
 
-    var mQuestionBank = arrayOf(Question(R.string.Question_autralia, true), Question(R.string.Question_america,false))
+    var mQuestionBank = arrayOf(Question(R.string.Question_autralia, true,0), Question(R.string.Question_america,false,0))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +31,23 @@ class MainActivity : AppCompatActivity() {
 
         btnTrue?.setOnClickListener() {
             CheckAnswer(true)
+            btnTrue?.isEnabled = false
+            mQuestionBank[mCurrentIndex].mcheck = 1
+
+
         }
         btnFalse?.setOnClickListener() {
             CheckAnswer(false)
+            btnFalse?.isEnabled = false
+            mQuestionBank[mCurrentIndex].mcheck = 1
         }
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
             UpdateQuestion()
+            if (mQuestionBank[mCurrentIndex].mcheck == 0) {
+                btnTrue?.isEnabled = true
+                btnFalse?.isEnabled = true
+            }
 
         }
     }
@@ -46,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             var question: Int? = 0
             question = mQuestionBank[mCurrentIndex].mTextResId
             mQuestionTextView?.setText(question!!)
+
         }
 
         fun CheckAnswer(userPressTrue: Boolean) {
