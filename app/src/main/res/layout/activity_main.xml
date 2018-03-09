@@ -12,7 +12,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:padding="24dp"
-         android:text="Canbera is the capital of Australia "
+         android:text=" "
          android:layout_gravity="center_horizontal"/>
 
  <LinearLayout

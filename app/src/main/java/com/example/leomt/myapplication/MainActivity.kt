@@ -29,13 +29,14 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState != null ) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0)
         }
-//          mQuestionTextView = findViewById(R.id.tv)
+        mQuestionTextView = findViewById(R.id.tv)
+        mQuestionTextView?.setText(mQuestionBank[mCurrentIndex].mTextResId!!)
 
-   //    btnTrue = findViewById(R.id.btn1)
-  //      btnFalse = findViewById(R.id.btn2)
+        btnTrue = findViewById(R.id.btn1)
+        btnFalse = findViewById(R.id.btn2)
         imgbtnNext = findViewById(R.id.imgbtn2)
 
-        btnTrue!!.setOnClickListener() {
+        btnTrue?.setOnClickListener() {
             CheckAnswer(true)
             btnTrue?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
