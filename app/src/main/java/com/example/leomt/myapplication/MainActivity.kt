@@ -1,5 +1,6 @@
 package com.example.leomt.myapplication
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     var btnFalse : Button? = null
     var imgbtnNext : ImageButton? = null
     var mQuestionTextView : TextView? = null
+    var mBtnCheat : Button? = null
     var mCurrentIndex : Int = 0
     var score : Double? = 0.0
     var percent : Double? = 0.0
@@ -46,6 +48,12 @@ class MainActivity : AppCompatActivity() {
             btnFalse?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
         }
+        mBtnCheat = findViewById(R.id.btnCheat)
+        mBtnCheat?.setOnClickListener { 
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
+        }
+        
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
             var total : Int? = 0
