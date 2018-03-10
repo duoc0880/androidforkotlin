@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         btnTrue = findViewById(R.id.btn1)
         btnFalse = findViewById(R.id.btn2)
-//        imgbtnNext = findViewById(R.id.imgbtn2)
+        imgbtnNext = findViewById(R.id.imgbtn2)
 
         btnTrue?.setOnClickListener() {
             CheckAnswer(true)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             btnFalse?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
         }
-        imgbtnNext!!.setOnClickListener() {
+        imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
             var total : Int? = 0
             total = mQuestionBank.size
@@ -65,14 +65,14 @@ class MainActivity : AppCompatActivity() {
 
         fun UpdateQuestion() {
             var question: Int? = 0
-            Log.i(TAG, "Updating question text", Exception())
+         //   Log.i(TAG, "Updating question text", Exception())
             question = mQuestionBank[mCurrentIndex].mTextResId
             mQuestionTextView?.setText(question!!)
 
         }
 
         fun CheckAnswer(userPressTrue: Boolean) {
-            Log.d(TAG, "Toi da di den day")
+         //   Log.d(TAG, "Toi da di den day")
             var answerIsTrue: Boolean
             var messResId: Int = 0
             answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue!!

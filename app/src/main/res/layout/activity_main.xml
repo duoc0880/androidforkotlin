@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.leomt.myapplication.MainActivity">
+    tools:context="com.example.leomt.myapplication.MainActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
 
      <TextView
          android:id="@+id/tv"
@@ -36,9 +39,13 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom|right">
-
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnCheat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cheat"/>
         <ImageButton
             android:id="@+id/imgbtn2"
             android:layout_width="wrap_content"
@@ -47,4 +54,4 @@
             />
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
