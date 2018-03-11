@@ -11,8 +11,8 @@ class CheatActivity : AppCompatActivity() {
     var mTextViewQuestion : TextView? = null
     var mTextViewAnswer : TextView? = null
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?)  {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.cheat)
 
         mTextViewQuestion = findViewById(R.id.tv1)
