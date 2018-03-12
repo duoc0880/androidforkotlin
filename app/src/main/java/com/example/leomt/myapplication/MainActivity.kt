@@ -1,5 +1,6 @@
 package com.example.leomt.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : Activity() {
     val TAG = "QuizActivity"
     val KEY_INDEX = " index "
     var btnTrue : Button? = null
@@ -20,7 +21,8 @@ class MainActivity : AppCompatActivity() {
     var mCurrentIndex : Int = 0
     var score : Double? = 0.0
     var percent : Double? = 0.0
-    var mQuestionBank = arrayOf(Question(R.string.Question_autralia, true,0), Question(R.string.Question_america,false,0))
+    var mQuestionBank = arrayOf(Question(R.string.Question_autralia, false,0), Question(R.string.Question_america,true,0),Question(R.string.Question_1, false,0),
+            Question(R.string.Question_2, false,0), Question(R.string.Question_3, true,0), Question(R.string.Question_4, true,0))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,25 +37,20 @@ class MainActivity : AppCompatActivity() {
         mQuestionTextView?.setText(mQuestionBank[mCurrentIndex].mTextResId!!)
 
         btnTrue = findViewById(R.id.btn1)
-        btnFalse = findViewById(R.id.btn2)
-        imgbtnNext = findViewById(R.id.imgbtn2)
-
         btnTrue?.setOnClickListener() {
             CheckAnswer(true)
             btnTrue?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
         }
+
+        btnFalse = findViewById(R.id.btn2)
         btnFalse?.setOnClickListener() {
             CheckAnswer(false)
             btnFalse?.isEnabled = false
             mQuestionBank[mCurrentIndex].mcheck = 1
         }
-        mBtnCheat = findViewById(R.id.btnCheat)
-        mBtnCheat?.setOnClickListener { 
-            val intent = Intent(this, CheatActivity::class.java)
-            startActivity(intent)
-        }
-        
+
+        imgbtnNext = findViewById(R.id.imgbtn2)
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
             var total : Int? = 0
@@ -69,14 +66,20 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-    }
+
+        mBtnCheat = findViewById(R.id.btnCheat)
+        mBtnCheat?.setOnClickListener { 
+            var answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue
+            var intent = CheatActivity.newIntent(this, answerIsTrue)
+            startActivity(intent)
+        }
+        }
 
         fun UpdateQuestion() {
             var question: Int? = 0
          //   Log.i(TAG, "Updating question text", Exception())
             question = mQuestionBank[mCurrentIndex].mTextResId
             mQuestionTextView?.setText(question!!)
-
         }
 
         fun CheckAnswer(userPressTrue: Boolean) {

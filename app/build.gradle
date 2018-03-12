@@ -8,6 +8,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.leomt.myapplication"
+     //   applicationId "com.bignerdranch.android.myapplication"
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1

@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="Question_autralia">Canbera is the capital of the Australia. </string>
-    <string name="Question_america">Amazon is the Rivers longest of the world! </string>
+    <string name="Question_autralia">Sydney là thủ đô của nước Australia. </string>
+    <string name="Question_america">Amazon là sông dài nhất TG </string>
+    <string name="Question_1"> Việt Nam có 64 tỉnh thành </string>
+    <string name="Question_2"> Quảng Nam là tỉnh có diện tích lớn nhất Việt Nam </string>
+    <string name="Question_3"> Đông Nam Bộ có lợi thế về trồng cao su </string>
+    <string name="Question_4"> Sông Trà Khúc ở tỉnh Quảng Ngãi </string>
+
     <string name="Correct">Correct</string>
     <string name="InCorrect">InCorrect</string>
 </resources>
