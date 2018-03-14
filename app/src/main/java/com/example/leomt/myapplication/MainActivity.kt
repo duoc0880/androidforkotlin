@@ -10,9 +10,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
-open class MainActivity : Activity() {
+open class MainActivity : AppCompatActivity() {
     val TAG = "QuizActivity"
     val KEY_INDEX = " index "
+    val REQUEST_CODE = 0
     var btnTrue : Button? = null
     var btnFalse : Button? = null
     var imgbtnNext : ImageButton? = null
@@ -21,8 +22,14 @@ open class MainActivity : Activity() {
     var mCurrentIndex : Int = 0
     var score : Double? = 0.0
     var percent : Double? = 0.0
-    var mQuestionBank = arrayOf(Question(R.string.Question_autralia, false,0), Question(R.string.Question_america,true,0),Question(R.string.Question_1, false,0),
-            Question(R.string.Question_2, false,0), Question(R.string.Question_3, true,0), Question(R.string.Question_4, true,0))
+    var mIsCheater : Boolean? = false
+    var mQuestionBank = arrayOf(
+            Question(R.string.Question_autralia, false,0),
+            Question(R.string.Question_america,true,0),
+            Question(R.string.Question_1, false,0),
+            Question(R.string.Question_2, false,0),
+            Question(R.string.Question_3, true,0),
+            Question(R.string.Question_4, true,0))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +60,7 @@ open class MainActivity : Activity() {
         imgbtnNext = findViewById(R.id.imgbtn2)
         imgbtnNext?.setOnClickListener() {
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.size
+            mIsCheater = false
             var total : Int? = 0
             total = mQuestionBank.size
             UpdateQuestion()
@@ -62,19 +70,33 @@ open class MainActivity : Activity() {
             }
             if (mCurrentIndex == 0) {
                percent = score?.div(total)?.times(100.0)
-               Toast.makeText(this, "you has been ${percent} % per score for the quiz ", Toast.LENGTH_SHORT ).show()
+               Toast.makeText(this,
+                       "you has been ${percent} % per score for the quiz ", Toast.LENGTH_SHORT ).show()
             }
 
         }
 
         mBtnCheat = findViewById(R.id.btnCheat)
         mBtnCheat?.setOnClickListener { 
-            var answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue
+            var answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerIsTrue
             var intent = CheatActivity.newIntent(this, answerIsTrue)
-            startActivity(intent)
-        }
+            startActivityForResult(intent,REQUEST_CODE)
         }
 
+        }
+
+
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+        if (requestCode == REQUEST_CODE) {
+            if (data == null) {
+                return
+            }
+            mIsCheater = CheatActivity.wasAnswerShown(data)
+        }
+    }
         fun UpdateQuestion() {
             var question: Int? = 0
          //   Log.i(TAG, "Updating question text", Exception())
@@ -86,11 +108,14 @@ open class MainActivity : Activity() {
          //   Log.d(TAG, "Toi da di den day")
             var answerIsTrue: Boolean
             var messResId: Int = 0
-            answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerTrue!!
-            if (answerIsTrue == userPressTrue) {
-                messResId = R.string.Correct
-                score = score?.plus(1)
-            } else messResId = R.string.InCorrect
+            answerIsTrue = mQuestionBank[mCurrentIndex].mAnswerIsTrue!!
+            if (mIsCheater == true) messResId = R.string.havecheat
+            else {
+                if (answerIsTrue == userPressTrue) {
+                    messResId = R.string.Correct
+                    score = score?.plus(1)
+                } else messResId = R.string.InCorrect
+            }
             Toast.makeText(this, messResId, Toast.LENGTH_SHORT).show()
         }
     }

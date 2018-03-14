@@ -8,5 +8,6 @@
     <string name="Question_4"> Sông Trà Khúc ở tỉnh Quảng Ngãi </string>
 
     <string name="Correct">Correct</string>
+    <string name="havecheat">Cheat Wrong!</string>
     <string name="InCorrect">InCorrect</string>
 </resources>
