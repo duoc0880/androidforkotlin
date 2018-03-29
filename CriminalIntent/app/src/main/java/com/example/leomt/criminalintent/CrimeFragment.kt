@@ -1,6 +1,5 @@
 package com.example.leomt.criminalintent
 
-import android.app.Fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -54,10 +53,6 @@ class CrimeFragment : android.support.v4.app.Fragment()
 
             }
         })
-
-
         return v
     }
 }
-
-

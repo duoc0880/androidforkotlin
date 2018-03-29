@@ -9,10 +9,11 @@ class CreamActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cream)
+        setContentView(R.layout.activity_crime)
 
         var fm : FragmentManager = supportFragmentManager
-        var fragment : Fragment = fm.findFragmentById(R.id.fragment_container)
+        var fragment = fm.findFragmentById(R.id.fragment_container)
+
         if (fragment == null) run {
             var fragment = CrimeFragment()
             fm.beginTransaction()
