@@ -29,15 +29,15 @@ class CrimeFragment : android.support.v4.app.Fragment()
         mTitleField = v.findViewById(R.id.crime_title)
         mTitleField?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
         })
 
@@ -48,7 +48,6 @@ class CrimeFragment : android.support.v4.app.Fragment()
         mSloveCheckBox = v.findViewById(R.id.crime_cb)
         mSloveCheckBox?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 mCrime?.mSlove = p1
 
             }

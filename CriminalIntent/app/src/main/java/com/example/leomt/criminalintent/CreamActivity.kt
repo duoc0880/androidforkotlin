@@ -12,6 +12,7 @@ class CreamActivity : AppCompatActivity() {
         setContentView(R.layout.activity_crime)
 
         var fm : FragmentManager = supportFragmentManager
+
         var fragment = fm.findFragmentById(R.id.fragment_container)
 
         if (fragment == null) run {
