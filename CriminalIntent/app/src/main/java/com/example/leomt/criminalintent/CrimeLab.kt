@@ -1,6 +1,7 @@
 package com.example.leomt.criminalintent
 
 import android.content.Context
+import java.util.*
 
 /**
  * Created by LEOMT on 3/29/18.
@@ -12,7 +13,6 @@ class CrimeLab {
         var sCrimeLab: CrimeLab? = null
         var mCrimes : List<Crime>? = null
 
-
         fun CrimeLab(context: Context) : CrimeLab? {
             if ( sCrimeLab == null ) {
                 sCrimeLab = CrimeLab (context)
@@ -23,8 +23,28 @@ class CrimeLab {
     }
 
     constructor( context : Context){
-        val mCrimes = ArrayList<Crime>()
+        var mCrimes = ArrayList<Crime>()
+        for ( i in 0..99 ) {
+           var crime = Crime()
+           crime.mTittle = " Crime # " + i
+           crime.mSlove = i%2 == 0
+           mCrimes.add(crime)
+        }
 
-        CrimeLab.mCrimes = mCrimes
     }
+
+    fun getCrimes() : List<Crime>? {
+        return mCrimes
+    }
+
+    fun getCrime( id : UUID ) : Crime? {
+      //  var crime : Crime
+        for (crime in mCrimes!!) {
+            if (crime.mId!!.equals(id)) {
+                return crime
+            }
+        }
+        return null
+    }
+
 }

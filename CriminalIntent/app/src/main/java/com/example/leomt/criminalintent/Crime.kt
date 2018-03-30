@@ -9,9 +9,11 @@ class Crime {
     var mDate : Date? = null
     var mSlove : Boolean? = false
 
-    constructor( ){
+    constructor(){
         mId = UUID.randomUUID()
         mDate = Date()
     }
+
+
 
 }
