@@ -19,6 +19,7 @@ class CrimeListFragment : Fragment(){
       var  view = inflater!!.inflate(R.layout.fragment_crime_list, container, false)
       mCrimeRecycleView = view.findViewById(R.id.crime_recycler_view)
       mCrimeRecycleView!!.layoutManager  = LinearLayoutManager(activity)
+        updateUI()
         return view
     }
 
@@ -74,7 +75,4 @@ class CrimeListFragment : Fragment(){
             return mCrimes.size
         }
     }
-
 }
-
-

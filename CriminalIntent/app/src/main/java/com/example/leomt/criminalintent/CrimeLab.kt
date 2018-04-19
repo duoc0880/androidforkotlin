@@ -11,7 +11,6 @@ class CrimeLab {
 
     companion object {
         var sCrimeLab: CrimeLab? = null
-        var mCrimes : List<Crime>? = null
 
         fun CrimeLab(context: Context) : CrimeLab? {
             if ( sCrimeLab == null ) {
@@ -22,6 +21,8 @@ class CrimeLab {
         }
     }
 
+    var mCrimes : List<Crime>? = null
+
     constructor( context : Context){
         var mCrimes = ArrayList<Crime>()
         for ( i in 0..99 ) {
@@ -30,7 +31,7 @@ class CrimeLab {
            crime.mSlove = i%2 == 0
            mCrimes.add(crime)
         }
-
+        this.mCrimes = mCrimes
     }
 
     fun getCrimes() : List<Crime>? {
