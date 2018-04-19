@@ -17,5 +17,7 @@ class CrimeListFragment : Fragment(){
       mCrimeRecycleView!!.layoutManager  = LinearLayoutManager(activity)
         return view
     }
-    
+
 }
+
+
