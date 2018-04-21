@@ -7,9 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 
 class CrimeListFragment : Fragment(){
     var mCrimeRecycleView : RecyclerView? = null
@@ -27,8 +26,12 @@ class CrimeListFragment : Fragment(){
         var crimeLab = CrimeLab(activity)
         var crimes : List<Crime> = crimeLab.getCrimes()!!
         mAdapter = CrimeAdapter(crimes)
-        mCrimeRecycleView!!.setAdapter(mAdapter)
-
+        if(mAdapter==null) {
+            mCrimeRecycleView!!.setAdapter(mAdapter)
+        }else
+        {
+            mAdapter!!.notifyDataSetChanged()
+        }
     }
 
      inner class CrimeHolder(inflater: LayoutInflater, parent: ViewGroup) : RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_crime, parent, false)), View.OnClickListener {
@@ -37,35 +40,33 @@ class CrimeListFragment : Fragment(){
 
          var mTitleTextView: TextView? = null
          var mDateTextView: TextView? = null
+         var mSolvedImageView: ImageView? = null
 
         init {
             itemView.setOnClickListener(this)
-
             mTitleTextView = itemView.findViewById(R.id.crime_title)
             mDateTextView = itemView.findViewById(R.id.crime_date)
+            mSolvedImageView = itemView.findViewById(R.id.crime_solved)
         }
 
         fun bind(crime: Crime) {
             mCrime = crime
             mTitleTextView!!.setText(mCrime!!.mTittle)
             mDateTextView!!.setText(mCrime!!.mDate.toString())
+            mSolvedImageView!!.setVisibility(if (crime.mSlove!!) View.VISIBLE else View.GONE)
         }
 
         override fun onClick(view: View) {
-            Toast.makeText(activity,
-                    mCrime!!.mTittle + " clicked!", Toast.LENGTH_SHORT)
-                    .show()
+            val intent = CreamActivity.newIntent(activity, mCrime!!.mId)
+            startActivity(intent)
         }
     }
-
-
      inner class CrimeAdapter( val mCrimes: List<Crime>) : RecyclerView.Adapter<CrimeHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
             val layoutInflater = LayoutInflater.from(activity)
             return CrimeHolder(layoutInflater, parent)
         }
-
         override fun onBindViewHolder(holder: CrimeHolder, position: Int) {
             val crime = mCrimes[position]
             holder.bind(crime)

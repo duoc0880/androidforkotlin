@@ -7,19 +7,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import java.util.*
 
 class CrimeFragment : android.support.v4.app.Fragment()
 {
+
     var mCrime : Crime? = null
     var mTitleField : EditText? = null
     var mDateButton : Button? = null
     var mSloveCheckBox: CheckBox? = null
 
+    companion object {
+        private val ARG_CRIME_ID = "crime_id"
+        fun newInstance(crimeId: UUID): CrimeFragment {
+            val args = Bundle()
+            args.putSerializable(ARG_CRIME_ID, crimeId)
 
-
+            val fragment = CrimeFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mCrime = Crime()
+        val crimeId = arguments.getSerializable(ARG_CRIME_ID) as UUID
+        mCrime = CrimeLab(activity).getCrime(crimeId)
+      //  mCrime = Crime()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
