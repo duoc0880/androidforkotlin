@@ -22,6 +22,12 @@ class CrimeListFragment : Fragment(){
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateUI()
+    }
+
+
     fun updateUI () {
         var crimeLab = CrimeLab(activity)
         var crimes : List<Crime> = crimeLab.getCrimes()!!
@@ -37,7 +43,6 @@ class CrimeListFragment : Fragment(){
      inner class CrimeHolder(inflater: LayoutInflater, parent: ViewGroup) : RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_crime, parent, false)), View.OnClickListener {
 
          var mCrime: Crime? = null
-
          var mTitleTextView: TextView? = null
          var mDateTextView: TextView? = null
          var mSolvedImageView: ImageView? = null
@@ -67,6 +72,7 @@ class CrimeListFragment : Fragment(){
             val layoutInflater = LayoutInflater.from(activity)
             return CrimeHolder(layoutInflater, parent)
         }
+
         override fun onBindViewHolder(holder: CrimeHolder, position: Int) {
             val crime = mCrimes[position]
             holder.bind(crime)

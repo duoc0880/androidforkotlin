@@ -32,7 +32,7 @@ class CrimeFragment : android.support.v4.app.Fragment()
         super.onCreate(savedInstanceState)
         val crimeId = arguments.getSerializable(ARG_CRIME_ID) as UUID
         mCrime = CrimeLab(activity).getCrime(crimeId)
-      //  mCrime = Crime()
+        mCrime = Crime()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -42,15 +42,12 @@ class CrimeFragment : android.support.v4.app.Fragment()
         mTitleField = v.findViewById(R.id.crime_title)
         mTitleField?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
         })
 
@@ -62,7 +59,6 @@ class CrimeFragment : android.support.v4.app.Fragment()
         mSloveCheckBox?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
                 mCrime?.mSlove = p1
-
             }
         })
         return v
