@@ -17,7 +17,8 @@ class CrimeListFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       var  view = inflater!!.inflate(R.layout.fragment_crime_list, container, false)
       mCrimeRecycleView = view.findViewById(R.id.crime_recycler_view)
-      mCrimeRecycleView!!.layoutManager  = LinearLayoutManager(activity)
+   //   mCrimeRecycleView!!.layoutManager  = LinearLayoutManager(activity)
+        mCrimeRecycleView!!.setLayoutManager(LinearLayoutManager(activity))
         updateUI()
         return view
     }
@@ -27,12 +28,12 @@ class CrimeListFragment : Fragment(){
         updateUI()
     }
 
-
     fun updateUI () {
         var crimeLab = CrimeLab(activity)
         var crimes : List<Crime> = crimeLab.getCrimes()!!
-        mAdapter = CrimeAdapter(crimes)
+
         if(mAdapter==null) {
+            mAdapter = CrimeAdapter(crimes)
             mCrimeRecycleView!!.setAdapter(mAdapter)
         }else
         {

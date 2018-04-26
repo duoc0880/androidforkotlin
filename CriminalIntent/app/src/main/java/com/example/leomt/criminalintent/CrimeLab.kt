@@ -28,7 +28,7 @@ class CrimeLab {
         for ( i in 0..99 ) {
            var crime = Crime()
            crime.mTittle = " Crime # " + i
-           crime.mSlove = i%2 == 0
+         //  crime.mSlove = i%2 == 0
            mCrimes.add(crime)
         }
         this.mCrimes = mCrimes

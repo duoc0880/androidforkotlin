@@ -9,8 +9,7 @@ class CreamActivity : SingleFragmentActivity() {
 
 
     companion object {
-        private val EXTRA_CRIME_ID = "com.bignerdranch.android.criminalintent.crime_id"
-
+        val EXTRA_CRIME_ID = "com.bignerdranch.android.criminalintent.crime_id"
         fun newIntent(packageContext: Context, crimeId: UUID?): Intent {
             val intent = Intent(packageContext, CreamActivity::class.java)
             intent.putExtra(EXTRA_CRIME_ID, crimeId)
